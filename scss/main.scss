@@ -1,12 +1,4 @@
-$clr-primary: #333;
-$clr-accent: rgb(0, 69, 126);
-$clr-text: #000;
-$clr-text-2: #fff;
-$font-weights: (
-    "regular": 400,
-    "medium": 500,
-    "bold": 700
-);
+@import "./resets", "./variables";
 
 body{
     background-color: $clr-accent;
@@ -18,7 +10,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .5em;
+    padding: 1em;
 }
 
 ul{
@@ -33,6 +25,26 @@ a{
     color: $clr-text-2;
 }
 
-h1{
-    font-weight: map-get($font-weights, bold);
+
+main{
+    background-color: $clr-primary;
+    width: 95%;
+    margin: .2em auto;
+    padding: 1em;
+    min-height: 90vh;
+
+    h1{
+        font-weight: map-get($font-weights, bold);
+        font-size: map-get($heading-sizes, large);
+        text-align: center;
+    }
+
+    .main-paragraph{
+        font-weight: map-get($font-weights, medium);
+        font-size: map-get($heading-sizes, medium);
+        color: $clr-text-2;
+        &:hover{
+            background-color: $clr-text;
+        }
+    }
 }
