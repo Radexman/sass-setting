@@ -1,50 +1,97 @@
 @import "./resets", "./variables";
 
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name);
+}
+
+@function size($font-size){
+    @return map-get($heading-sizes, $font-size);
+}
+
+@function color($color-name){
+    @return map-get($colors, $color-name);
+}
+
+@mixin flexCenter($direction) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin flexEvenly {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@mixin flexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+@mixin theme($dark-theme: true) {
+    @if $dark-theme true {
+        background-color: color(primary-1);
+    } else {
+        background-color: color(secondary-1);
+        color: color(primary-1);
+    }
+}
+
 body{
-    background-color: $clr-accent;
+    background-color: color(primary-1);
 }
 
 header{
-    background: $clr-text;
-    color: $clr-text-2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flexBetween;
     padding: 1em;
+    background-color: color(primary-2);
+
+    .logo{
+        font-size: size(big);
+        font-weight: weight(bold);
+        color: color(secondary-1);
+        cursor: pointer;
+    }
 }
 
 ul{
     min-width: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     list-style: none;
-}
+    @include flexEvenly;
 
-a{
-    color: $clr-text-2;
-}
+    li{
+        font-size: size(medium);
 
+        a{
+            text-decoration: none;
+            color: color(secondary-2);
+        }
+    }
+}
 
 main{
-    background-color: $clr-primary;
+    @include flexCenter(column);
     width: 95%;
     margin: .2em auto;
     padding: 1em;
     min-height: 90vh;
+    color: color(secondary-2);
 
     h1{
-        font-weight: map-get($font-weights, bold);
-        font-size: map-get($heading-sizes, large);
+        font-weight: weight(regular);
+        font-size: size(large);
         text-align: center;
     }
 
     .main-paragraph{
-        font-weight: map-get($font-weights, medium);
-        font-size: map-get($heading-sizes, medium);
-        color: $clr-text-2;
-        &:hover{
-            background-color: $clr-text;
-        }
+        font-weight: weight(regular);
+        font-size: size(medium);
     }
+}
+
+#light{
+    @include theme($dark-theme: true);
 }

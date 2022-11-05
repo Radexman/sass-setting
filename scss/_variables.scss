@@ -1,15 +1,20 @@
-$clr-primary: #333;
-$clr-accent: rgb(0, 69, 126);
-$clr-text: #000;
-$clr-text-2: #fff;
 $font-weights: (
     "regular": 400,
     "medium": 500,
     "bold": 700
 );
+
 $heading-sizes: (
     "small": 1rem,
     "medium": 1.5rem,
     "big": 2rem,
     "large": 3rem
 );
+
+$colors: (
+    "primary-1": #1F1E26,
+    "primary-2": #732626,
+    "accent": #8C5E54,
+    "secondary-1": #D9B1A3,
+    "secondary-2": #F0F0F2
+)
